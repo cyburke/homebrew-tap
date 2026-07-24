@@ -11,15 +11,19 @@ cask "hey-codex" do
 
   app "HeyCodex.app"
 
+  # Hey Codex is signed but not notarized, so macOS quarantines the download and
+  # blocks the first launch behind System Settings. Homebrew's own
+  # --no-quarantine option was removed in Homebrew 6, so clear the attribute
+  # here instead. Installing from this tap is the user opting in to that.
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-dr", "com.apple.quarantine", "#{appdir}/HeyCodex.app"],
+                   sudo: false
+  end
+
   caveats <<~EOS
-    Hey Codex is signed but not notarized, so macOS blocks the first launch.
-
-    Open it, click Done on the warning, then go to
-    System Settings > Privacy & Security, scroll to Security, and click
-    "Open Anyway" next to the Hey Codex message. That is a one time step.
-
-    Then grant Microphone and Accessibility when asked. Accessibility is what
-    lets Hey Codex press the ChatGPT Voice hotkey.
+    Launch Hey Codex, then grant Microphone and Accessibility when asked.
+    Accessibility is what lets it press the ChatGPT Voice hotkey.
   EOS
 
   uninstall quit: "com.heycodex.app"
