@@ -1,6 +1,6 @@
 cask "hey-codex" do
-  version "0.1.0"
-  sha256 "bbd380b46591a9d1d632c78d86a6f8e0dfc0a717767413b6a50a91133ffce67d"
+  version "0.1.1"
+  sha256 "15abe48dc422e839d32537902a8edd4d6fdf1140b73d838827f9e1b797ad30b2"
 
   url "https://github.com/cyburke/hey-codex/releases/download/v#{version}/HeyCodex-#{version}.zip"
   name "Hey Codex"
