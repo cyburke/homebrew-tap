@@ -7,7 +7,7 @@ cask "hey-codex" do
   desc "Menu-bar wake word that opens ChatGPT Voice"
   homepage "https://github.com/cyburke/hey-codex"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "HeyCodex.app"
 
