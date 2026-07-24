@@ -12,12 +12,14 @@ cask "hey-codex" do
   app "HeyCodex.app"
 
   caveats <<~EOS
-    Hey Codex is not notarized, so it must be installed with --no-quarantine:
+    Hey Codex is signed but not notarized, so macOS blocks the first launch.
 
-      brew install --cask --no-quarantine cyburke/tap/hey-codex
+    Open it, click Done on the warning, then go to
+    System Settings > Privacy & Security, scroll to Security, and click
+    "Open Anyway" next to the Hey Codex message. That is a one time step.
 
-    On first launch, grant Microphone and Accessibility permission when asked.
-    Accessibility is what lets Hey Codex press the ChatGPT Voice hotkey.
+    Then grant Microphone and Accessibility when asked. Accessibility is what
+    lets Hey Codex press the ChatGPT Voice hotkey.
   EOS
 
   uninstall quit: "com.heycodex.app"
